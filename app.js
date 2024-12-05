@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import connectDB from "./configs/DbConfig.js";
 import usuarioRouter from "./routes/UsuarioRouter.js";
 import atividadeRouter from "./routes/AtividadeRouter.js";
@@ -12,6 +13,7 @@ const app = express();
 const port = process.env.PORT || 3002;
 
 connectDB();
+app.use(cors());
 app.use(express.json());
 app.use("/usuarios", usuarioRouter);
 app.use("/atividades", atividadeRouter);
